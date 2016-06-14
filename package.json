@@ -1,0 +1,32 @@
+{
+  "name": "node-raspberry-pi-sample",
+  "version": "1.0.0",
+  "description": "Raspberry Pi Node.js sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kauczuk79/node-raspberry-pi-sample.git"
+  },
+  "keywords": [
+    "Raspberry",
+    "pi",
+    "sample",
+    "node",
+    "javascript"
+  ],
+  "author": "Robert Wesolowski",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kauczuk79/node-raspberry-pi-sample/issues"
+  },
+  "homepage": "https://github.com/kauczuk79/node-raspberry-pi-sample#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "http-status": "^0.2.3",
+    "pi-gpio": "0.0.8"
+  }
+}
