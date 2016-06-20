@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body ng-app="app">
+    <div ng-controller="gpio">
+        <table>
+            <tr ng-repeat="pin in gpioPins">
+                <td>GPIO{{pin}}</td>
+                <td>
+                    <button ng-click="enableOutput(pin)">Enable</button>
+                </td>
+                <td>
+                    <button ng-click="disableOutput(pin)">Disable</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="libs/angular/angular.js"></script>
+
+    <script src="app.js"></script>
+    <script src="gpioController.js"></script>
+</body>
+
+</html>

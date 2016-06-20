@@ -8,6 +8,9 @@
 
     app.use('/api', backendApi);
 
+    app.use('/', express.static('frontend'));
+    app.use('/libs/angular', express.static('node_modules/angular'));
+
     server = app.listen(3000, function () {
         var host = server.address()
             .address,
