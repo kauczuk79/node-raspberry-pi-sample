@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/kauczuk79/node-raspberry-pi-sample#readme",
   "dependencies": {
+    "angular": "^1.5.7",
     "express": "^4.13.4",
     "gpio": "^0.2.7",
     "http-status": "^0.2.3"

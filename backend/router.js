@@ -6,15 +6,18 @@ var express = require('express'),
     availableGpios = [4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26, 14, 15, 18, 23, 24, 25, 8, 7, 16, 20, 21],
     gpioArray = [],
     index,
-    len;
+    len,
+    CT = 'Content-Type',
+    CT_JSON = 'application/json';
 
-for (index = 0, len = availableGpios.length; index <= len; index += 1) {
+for (index = 0, len = availableGpios.length; index < len; index += 1) {
     var pin = availableGpios[index];
-    gpioArray[index] = gpio.export(index, {
+    console.log(pin);
+    gpioArray['' + pin] = gpio.export(pin, {
         direction: 'out',
         interval: 200,
         ready: function () {
-            console.log('Pin ' + index + ' was exported');
+            
         }
     });
 }
@@ -22,11 +25,11 @@ for (index = 0, len = availableGpios.length; index <= len; index += 1) {
 router.get('/enable/:id', function (request, response) {
     var id = request.params.id;
     if (gpioArray[id] === undefined) {
-        response.status(status.NOT_FOUND)
+        response.status(status.NOT_FOUND).header(CT, CT_JSON)
             .send();
     } else {
         gpioArray[id].set();
-        response.status(status.OK)
+        response.status(status.OK).header(CT, CT_JSON)
             .send();
     }
 });
@@ -34,18 +37,16 @@ router.get('/enable/:id', function (request, response) {
 router.get('/disable/:id', function (request, response) {
     var id = request.params.id;
     if (gpioArray[id] === undefined) {
-        response.status(status.NOT_FOUND)
+        response.status(status.NOT_FOUND).header(CT, CT_JSON)
             .send();
     } else {
         gpioArray[id].reset();
-        response.status(status.OK)
+        response.status(status.OK).header(CT, CT_JSON)
             .send();
     }
 });
 
 router.get('/pins', function (request, response) {
-    var CT = 'Content-Type',
-        CT_JSON = 'application/json';
     response.status(status.OK).header(CT, CT_JSON).send({
         pins: availableGpios
     });
